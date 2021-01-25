@@ -1,0 +1,4 @@
+Hola de doy la Bienvenida a nuestro sitio weeb.
+Vamos a probar que php nos permita subir cualquer tipo de espacion
+1)-Primer espacio.
+2)-segundo Espacio.

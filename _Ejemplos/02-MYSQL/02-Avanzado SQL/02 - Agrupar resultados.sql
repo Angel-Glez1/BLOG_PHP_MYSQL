@@ -1,0 +1,25 @@
+/*
+CANTIDAD DE USUARIOS
+DISCRIMINADOS POR NIVEL Y GENERO
+*/
+SELECT 
+	COUNT( ID ) AS TOTAL,
+	NIVEL,
+	IFNULL( GENERO, 'sin genero' ) as GENERO
+FROM 
+	usuarios AS u 
+	LEFT JOIN generos AS g ON g.IDGENERO = u.FKGENERO
+GROUP BY NIVEL, GENERO -- se puede agurpar por mas de una columna ya que en este caso puede exitir un lector MUS y FEM
+ORDER BY TOTAL DESC, NIVEL, GENERO;
+
+/*
+CANTIDAD DE COMENTARIOS POR CADA TEXTO
+*/
+SELECT 
+	COUNT( c.FKPOSTEO ) AS TOTAL,
+	p.TITULO,
+	P.ID
+FROM 
+	comentarios AS c
+	RIGHT JOIN posteos AS p ON p.ID = c.FKPOSTEO
+GROUP BY p.ID;

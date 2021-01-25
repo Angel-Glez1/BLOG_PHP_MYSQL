@@ -1,0 +1,35 @@
+#Definir el tipo de archivo a mostrar
+#DirectoryIndex index.php index.html intro.c++
+
+
+#Ocultar las carpetas de mi sitio web -indexes (me oculta los archivo) indexes(muestra por defecto)
+Options -indexes
+
+
+
+#Errores de 400 son Errores del cliente (frontEnd)
+#404 => No exite la pagina solicitada
+#403 => Exite la carpeta solicitada pero no tiene permiso 
+#Errores de 500 son errores de servidor (Backend)
+#Configurar que pasa cuando el error el 404 (archivo no encont rado)
+#ErrorDocument 404 https://www.google.com -> Redireccionar a un url
+ErrorDocument 404 /Blog-php/index.php?seccion=error&r=404
+ErrorDocument 403 /Blog-php/index.php?seccion=error&r=403
+
+php_flag short_open_tag On
+php_value upload_max_filesize 500M
+
+#Habilitar url amigables
+RewriteEngine On 
+
+#Escribir las url amigables
+RewriteRule ^categorias$    index.php?seccion=categorias [NC] 
+RewriteRule ^registro$      index.php?seccion=registroBlog-php.test [NC] 
+RewriteRule ^contacto$      index.php?seccion=contacto  [NC]
+
+
+
+
+
+RewriteRule ^categorias-(\d+)/[\w\-]+$ index.php?seccion=categoria&idc=$1
+RewriteRule ^contacto$ index.php?seccion=contacto  [NC]
