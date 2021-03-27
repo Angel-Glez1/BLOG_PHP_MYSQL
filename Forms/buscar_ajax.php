@@ -4,7 +4,7 @@
 header("Acces-Controll-Allow-Origin: *");
 
 require_once '../setup/conexion.php';
-$buscar = $_POST['buscar'];
+$buscar = escape($_POST['buscar']);
 
 $c= "SELECT TITULO, ID FROM posteos WHERE TITULO LIKE  '%$buscar%' OR TEXTO LIKE '%$buscar%' ORDER BY TITULO";
 
